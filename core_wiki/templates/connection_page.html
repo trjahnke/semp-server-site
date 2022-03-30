@@ -1,0 +1,31 @@
+{% extends 'base_wiki.html' %}
+
+
+{% block title %}
+{{ server.server_name|capfirst }} Connection
+{% endblock %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+    <div class="col-sm-6">
+        <div class="card mx-auto">
+            <div class="card-body">
+                <h1 class="card-title">{{ server.server_name|capfirst }}</h1>
+                <p class="card-text">{{ server.description }}
+                    <br>
+                    URL/IP: {{ server.url }} Port: {{ server.port }}
+                    <br>
+                    Password: {{ server.password }}
+                </p>
+            </div>
+            <img src="{{ server.image }}" class="card-img-bottom" alt="{{ server.alt_image }}">
+        </div>
+    </div>
+</div>
+
+
+<br>
+<p><a href="/wiki/{{server.server_name}}">{{ wiki.title }}</a></p>
+
+{% endblock content %}

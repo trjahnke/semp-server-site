@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Status Page{% endblock title %}
+
+{% block content %}
+<!-- <h1>Status Page</h1> -->
+
+{% for server in servers %}
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col">
+        <div class="card">
+            <img class="card-img-top img-fluid" style="height: 15rem;" src="{{ server.image }}"
+                alt="{{ server.alt_image }}">
+            {% if valheim == 0 %}
+            <div class="progress">
+                <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" style="width:100%">
+                    Online
+                </div>
+            </div>
+            {% else %}
+            <div class="progress">
+                <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" style="width:100%">
+                    Offline
+                </div>
+            </div>
+            {% endif %}
+            <div class="card-body">
+                <h4 class="card-title">{{ server.server_name|capfirst }}</h4>
+                <div class="btn-group">
+                    <a href="wiki/{{ server.server_name }}/connection" class="btn btn-success btn-size">Connect</a>
+                    <a href="wiki/{{ server.server_name }}" class="btn btn-secondary btn-size">Wiki</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock content %}
